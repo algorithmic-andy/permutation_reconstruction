@@ -1,333 +1,694 @@
-# Permutation Reasoning
+# Permutation Reasoning via Invariant-Guided World Models
 
-A modular research framework for latent combinatorial search under invariant constraints.
+A modular research framework for studying combinatorial reasoning, latent world modeling, and invariant-guided search in synthetic permutation environments.
 
----
+This repository investigates whether predictive latent representations and structured planners can reason over hidden matrix permutations using only invariant-based observations.
 
-## Overview
+The framework combines:
 
-This project investigates whether neural latent world models can recover hidden combinatorial structure from compressed invariant observations.
+* invariant-guided search
+* graph-based swap reasoning
+* differentiable permutation flow models
+* JEPA-style latent predictive architectures
+* automated evaluation and reporting
+* scaling and failure analysis tooling
 
-Given:
-
-* an `n x n` matrix containing a permutation of integers `1..n²`,
-* and invariant observations derived from that hidden arrangement,
-
-models must iteratively refine candidate permutations toward the latent target configuration.
-
-Unlike standard supervised reconstruction tasks, the focus is not solely exact recovery, but:
-
-* iterative search dynamics,
-* latent planning,
-* structured representation learning,
-* and progressive reduction in combinatorial inconsistency.
-
-The framework is designed as a controlled synthetic environment for studying:
-
-* latent reasoning,
-* predictive representation learning,
-* permutation-space search,
-* and structured world models.
+The broader goal is to study how learned systems reason over structured combinatorial state spaces under constrained information.
 
 ---
 
-# Problem Definition
+# Core Research Themes
 
-Let:
+* combinatorial reasoning
+* latent world modeling
+* predictive representation learning
+* invariant-guided search
+* structured planning
+* reasoning under uncertainty
+* representation geometry
+* trajectory optimization
 
-* `X ∈ R^(n×n)` be a hidden permutation matrix containing integers `1..n²`
-* `I(X)` denote a set of invariant statistics computed from `X`
+---
 
-The invariant operator currently includes:
+# Current Capabilities
 
-* row sums,
-* column sums,
-* row log-products,
-* column log-products.
+The repository currently supports:
 
-The task is to learn:
+* invariant-guided permutation environments
+* swap-based combinatorial planners
+* JEPA latent predictive models
+* differentiable flow-based permutation models
+* scaling experiments
+* latent PCA analysis
+* failure analysis
+* multi-seed evaluation
+* automated markdown reporting
+* trajectory serialization
+* runtime benchmarking
+* hyperparameter sweeps
+* statistical comparison tooling
 
-```text
-I(X) -> X
+---
+
+# Research Motivation
+
+Modern AI systems perform extremely well on many perception and prediction tasks, yet robust combinatorial reasoning remains difficult.
+
+This project explores whether latent predictive world models can reason over structured permutation spaces using only invariant-based observations.
+
+The environment is intentionally simple:
+
+* shuffled integer matrices
+* invariant constraints
+* swap-based actions
+
+Despite this simplicity, the underlying reconstruction problem becomes highly combinatorial as matrix size increases.
+
+The broader goal is to study:
+
+* latent reasoning
+* combinatorial planning
+* abstraction formation
+* predictive world modeling
+
+within a controlled experimental setting.
+
+---
+
+# Research Philosophy
+
+This repository emphasizes:
+
+* controlled synthetic environments
+* interpretable reasoning dynamics
+* modular experimentation
+* lightweight reproducibility
+* scalable research infrastructure
+
+rather than large-scale compute optimization.
+
+The goal is not only reconstruction accuracy, but understanding how reasoning systems behave under constrained structured information.
+
+---
+
+# Quickstart
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repo-url>
+cd permutation-reasoning
 ```
 
-or more generally:
+Create environment:
 
-```text
-candidate_state_t
-    + invariant observations
-    -> improved candidate_state_(t+1)
+```bash
+python -m venv venv
 ```
 
-through iterative combinatorial search.
+Activate environment:
+
+### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -e .
+```
+
+Run tests:
+
+```bash
+pytest tests/
+```
 
 ---
 
-# Research Goals
+# Running Experiments
 
-This repository explores:
+## Run Basic Experiment
 
-1. Latent representation learning over permutation spaces
-2. Iterative refinement dynamics for combinatorial reasoning
-3. JEPA-style predictive world models for structured search
-4. Energy-based reasoning over invariant consistency
-5. Comparison between graph, transport, and latent planning approaches
-
-The project intentionally emphasizes:
-
-* modularity,
-* reproducibility,
-* clean experiment design,
-* and interpretable research structure.
+```bash
+python scripts/run_experiment.py
+```
 
 ---
 
-# Core Research Questions
+## Run Hyperparameter Sweep
 
-* Can latent predictive models learn meaningful search trajectories in permutation space?
-* Do learned latent dynamics improve combinatorial reconstruction efficiency?
-* How do graph-based, flow-based, and JEPA-based approaches differ in latent geometry?
-* Can iterative latent planning reduce invariant inconsistency over time?
-* How does reasoning performance scale with permutation complexity?
+```bash
+python scripts/run_sweep.py
+```
 
 ---
 
-# Methods
+## Run Multi-Seed Evaluation
 
-The framework currently targets three model families.
+```bash
+python scripts/run_multiseed_sweep.py
+```
 
-## 1. Graph-Based Search Models
+---
 
-Graph neural architectures operating over pairwise permutation interactions.
+## Run Runtime Benchmark
+
+```bash
+python scripts/runtime_benchmark.py
+```
+
+---
+
+## Run Full Evaluation Pipeline
+
+```bash
+python scripts/full_evaluation.py
+```
+
+---
+
+# Generated Research Artifacts
+
+Experiments automatically generate research artifacts including:
+
+* benchmark summaries
+* scaling curves
+* latent PCA visualizations
+* planner comparison plots
+* convergence analysis
+* runtime benchmarks
+* failure distributions
+* serialized trajectories
+* markdown analysis reports
+* statistical summaries
+
+Generated outputs are stored inside experiment artifact directories.
+
+Example artifact structure:
+
+```text
+artifacts/
+└── experiment_name/
+    ├── benchmark.json
+    ├── analysis_report.md
+    ├── latent_pca.png
+    ├── scaling_curve.png
+    ├── planner_comparison.png
+    ├── failure_distribution.png
+    └── trajectories/
+```
+
+---
+
+# Example Generated Outputs
+
+The framework supports automated generation of:
+
+* latent representation geometry plots
+* scaling analysis figures
+* failure visualizations
+* trajectory convergence plots
+* markdown research reports
+* planner comparison summaries
+
+These artifacts are designed to support reproducible experimental analysis and lightweight research workflows.
+
+---
+
+# System Architecture
+
+The repository is organized into modular research components:
+
+* `dynamics/`
+  permutation environments, invariants, transitions, search
+
+* `models/`
+  JEPA models, flow models, graph reasoning architectures
+
+* `planners/`
+  combinatorial search and action-selection policies
+
+* `evaluation/`
+  benchmarking, plotting, reporting, failure analysis, latent analysis
+
+* `experiments/`
+  sweeps, aggregation, serialization, runtime analysis
+
+* `training/`
+  training infrastructure and optimization
+
+* `configs/`
+  reproducible experiment configuration system
+
+See:
+
+* `docs/architecture.md`
+* `docs/experiments.md`
+* `docs/future_work.md`
+
+---
+
+# Experimental Methodology
+
+## Environment
+
+Each environment consists of:
+
+* an `n x n` matrix
+* values from `1` to `n²`
+* randomly permuted target states
+
+Agents observe invariant statistics derived from hidden target permutations.
+
+---
+
+## Invariant Observations
+
+Current invariant observations include:
+
+* row sums
+* column sums
+* row log-products
+* column log-products
+
+These invariants provide structured but indirect information about target configurations.
+
+---
+
+## Actions
+
+Agents interact through swap operations between matrix positions.
+
+This creates a combinatorial search problem over permutation space.
+
+---
+
+## Evaluation Metrics
+
+Primary evaluation metrics include:
+
+* mean hamming distance
+* convergence rate
+* trajectory length
+* runtime scaling
+* failure statistics
+
+Lower hamming distance indicates more accurate reconstruction.
+
+---
+
+## Reproducibility
+
+Experiments support:
+
+* fixed random seeds
+* multi-seed evaluation
+* serialized outputs
+* config-driven execution
+* automated reporting
+
+to improve scientific reproducibility and experimental consistency.
+
+---
+
+# Implemented Model Families
+
+## Graph Swap Reasoning
+
+Graph-style swap planners predict local permutation edits using relational reasoning dynamics.
 
 Focus:
 
-* relational reasoning,
-* swap prediction,
-* local combinatorial structure.
+* explicit combinatorial search
+* local optimization
+* swap trajectory improvement
 
 ---
 
-## 2. Permutation Flow Models
+## Permutation Flow Models
 
-Transport-style models that learn soft transition operators over permutation states.
+Differentiable transport-style models predict soft permutation structure using Sinkhorn normalization.
 
 Focus:
 
-* global assignment structure,
-* soft permutation dynamics,
-* Sinkhorn-based transport reasoning.
+* permutation transport
+* differentiable assignment structure
+* global reasoning dynamics
 
 ---
 
-## 3. JEPA-Based Latent World Models
+## JEPA Latent Predictive Models
 
-Joint embedding predictive architectures that learn latent transition dynamics.
+JEPA-style architectures learn latent predictive representations over permutation trajectories.
 
 Focus:
 
-* predictive latent representations,
-* iterative refinement,
-* latent planning,
-* EMA target encoders,
-* trajectory consistency.
+* latent world modeling
+* predictive representation learning
+* trajectory reasoning
+* energy-based latent consistency
 
 ---
 
-# Project Philosophy
+# Evaluation and Analysis
 
-This repository is intentionally designed as:
+The repository includes extensive analysis tooling for studying reasoning behavior.
 
-```text
-A small but deeply coherent research framework.
-```
+Supported analysis includes:
 
-The emphasis is on:
+* trajectory analysis
+* convergence analysis
+* scaling analysis
+* latent PCA visualization
+* failure diagnostics
+* planner comparison
+* runtime benchmarking
+* statistical aggregation
 
-* modular abstractions,
-* clean experimental interfaces,
-* compositional model design,
-* and reproducible research workflows.
+The framework emphasizes interpretability and reasoning dynamics rather than only final reconstruction accuracy.
 
-The goal is not infrastructure scale.
+---
 
-The goal is:
+# Scaling Analysis
 
-* scientific clarity,
-* architectural discipline,
-* and meaningful experimentation.
+Scaling experiments study how reasoning difficulty changes as matrix dimensionality increases.
+
+Scaling evaluations include:
+
+* reconstruction difficulty
+* convergence behavior
+* runtime growth
+* planner robustness
+* failure frequency
+
+Permutation complexity grows factorially with matrix size, making exact reconstruction increasingly difficult.
+
+The repository intentionally emphasizes:
+
+* lightweight reproducible experiments
+* scaling trends
+* reasoning behavior
+
+rather than large-scale compute optimization.
+
+---
+
+# Failure Analysis
+
+The framework includes tooling for analyzing difficult reconstruction failures.
+
+Failure cases track:
+
+* initial states
+* target permutations
+* final reconstructed states
+* hamming distance
+* trajectory length
+
+This enables investigation of:
+
+* unstable search trajectories
+* local minima
+* ambiguous invariant structures
+* scaling bottlenecks
+
+Understanding failure modes is important because exact combinatorial reconstruction rapidly becomes difficult as dimensionality increases.
+
+---
+
+# Latent World Modeling
+
+The JEPA variants implemented in this repository investigate whether predictive latent representations can support combinatorial reasoning.
+
+Rather than directly reconstructing permutations, these models learn:
+
+* latent transition structure
+* predictive trajectory representations
+* invariant-aware embeddings
+
+This framing is inspired by broader research directions in:
+
+* predictive world models
+* latent planning
+* representation learning
+* self-supervised reasoning systems
+
+The goal is not merely prediction accuracy, but understanding how latent predictive structure may support reasoning over discrete combinatorial environments.
+
+---
+
+# Key Research Insights
+
+## Invariants Provide Strong Structural Constraints
+
+Even simple invariant statistics dramatically constrain permutation search space structure.
+
+This suggests that reasoning systems may benefit from abstract constraint representations rather than direct reconstruction objectives alone.
+
+---
+
+## Exact Reconstruction Is Highly Combinatorial
+
+As matrix dimensionality grows, exact reconstruction rapidly becomes difficult.
+
+However, models often learn meaningful partial structure and substantially reduce hamming distance even when exact recovery fails.
+
+---
+
+## Latent Prediction Encourages Structured Representations
+
+JEPA-style objectives frequently learn smoother latent transition geometry than direct action prediction objectives.
+
+This may indicate that predictive latent modeling encourages more globally coherent reasoning representations.
+
+---
+
+## Search and Representation Learning Are Complementary
+
+Explicit search-based planners and latent predictive models exhibit different strengths:
+
+* search improves local optimization
+* latent models improve global structure learning
+
+Future systems may benefit from combining both approaches.
+
+---
+
+# Research Infrastructure
+
+The repository includes modular experimentation infrastructure for reproducible research workflows.
+
+Supported infrastructure includes:
+
+* hyperparameter sweeps
+* multi-seed evaluation
+* runtime benchmarking
+* trajectory serialization
+* automated markdown reporting
+* artifact generation
+* statistical aggregation
+* scaling evaluation
+
+The goal is to support lightweight but extensible combinatorial reasoning research.
+
+---
+
+# Research Questions
+
+This repository investigates several questions related to combinatorial reasoning and latent world modeling.
+
+## Core Questions
+
+1. Can latent predictive models reason over combinatorial permutation spaces?
+
+2. How well can invariant-guided planners reconstruct hidden matrix permutations?
+
+3. How do JEPA-style latent objectives compare against explicit search-based methods?
+
+4. What representations emerge during invariant-based reasoning?
+
+5. How does reasoning performance scale with matrix dimensionality?
+
+---
+
+## Comparative Questions
+
+The repository compares multiple reasoning paradigms:
+
+* graph-based swap reasoning
+* permutation flow transport models
+* latent predictive JEPA systems
+
+The goal is not only reconstruction accuracy, but also:
+
+* convergence behavior
+* planning efficiency
+* latent structure formation
+* scaling properties
+
+---
+
+# Future Work
+
+Several important research directions remain open.
+
+## Partial and Noisy Invariant Reasoning
+
+Current experiments assume access to complete invariant information.
+
+Future work will investigate:
+
+* partial invariant observations
+* noisy measurements
+* probabilistic reconstruction
+* uncertainty-aware planning
+
+---
+
+## Hierarchical Planning
+
+Current planners primarily operate through local swap actions.
+
+Future systems may explore:
+
+* hierarchical search
+* latent planning
+* tree-based reasoning
+* coarse-to-fine reconstruction
+
+---
+
+## Representation Geometry
+
+Additional work is needed to better understand:
+
+* latent transition structure
+* invariant compression
+* geometric organization of reasoning trajectories
+
+---
+
+# Limitations
+
+This project is intentionally designed as a lightweight research framework rather than a large-scale production system.
+
+Current limitations include:
+
+* relatively small matrix sizes
+* synthetic environments
+* limited planner complexity
+* lightweight compute budgets
+* full invariant observability assumptions
+
+The framework prioritizes:
+
+* modularity
+* reasoning analysis
+* reproducibility
+* experimental clarity
+
+over large-scale optimization.
 
 ---
 
 # Repository Structure
 
 ```text
-permutation-reasoning/
-│
-├── README.md
-├── pyproject.toml
-├── requirements.txt
-│
-├── configs/
-│   ├── data/
-│   ├── model/
-│   ├── train/
-│   └── experiment/
-│
-├── scripts/
-│   ├── train.py
-│   ├── evaluate.py
-│   ├── benchmark.py
-│   └── analyze_latents.py
-│
-├── src/
-│   └── permutation_reasoning/
-│       ├── dynamics/
-│       ├── data/
-│       ├── models/
-│       ├── training/
-│       ├── evaluation/
-│       └── utils/
-│
-├── tests/
-├── outputs/
-├── notebooks/
-└── docs/
+src/permutation_reasoning/
+├── data/
+├── dynamics/
+├── evaluation/
+├── experiments/
+├── models/
+├── planners/
+├── training/
+└── utils/
+
+configs/
+├── data/
+├── experiment/
+├── model/
+└── train/
+
+scripts/
+├── run_experiment.py
+├── run_sweep.py
+├── run_multiseed_sweep.py
+├── run_scaling.py
+├── runtime_benchmark.py
+├── compare_models.py
+└── full_evaluation.py
+
+docs/
+tests/
+artifacts/
 ```
 
 ---
 
-# Core Abstractions
+# Current Status
 
-The framework is built around a small set of semantic primitives.
+The repository is actively under development.
 
-## PermutationState
+Current focus areas include:
 
-Represents a candidate permutation configuration.
+* latent planning
+* noisy invariant reasoning
+* hierarchical search
+* scaling analysis
+* combinatorial world modeling
 
-## Invariants
-
-Structured invariant observations derived from hidden target states.
-
-## SwapAction
-
-Atomic permutation transition operator.
-
-## Transition
-
-Single search step:
-
-```text
-state_t + action_t -> state_(t+1)
-```
-
-## Trajectory
-
-Sequence of search transitions through permutation space.
+The framework is intentionally modular to support future experimentation and research extensions.
 
 ---
 
-# Evaluation
+# Citation
 
-Primary evaluation metrics include:
+If you use this repository in future research, please cite:
 
-* Exact reconstruction accuracy
-* Hamming distance
-* Invariant residual error
-* Search efficiency
-* Trajectory improvement
-* Scaling behavior with increasing `n`
-
-The project focuses heavily on:
-
-* failure analysis,
-* ambiguity structure,
-* and latent representation geometry.
-
----
-
-# Planned Features
-
-* Modular JEPA framework
-* EMA target encoders
-* Iterative latent planners
-* Beam-search refinement
-* Curriculum scaling across `n`
-* Latent trajectory analysis
-* Energy-based consistency scoring
-* Representation probing utilities
-* Visualization and benchmarking tools
-
----
-
-# Development Roadmap
-
-## M0 — Research Architecture & System Design
-
-* Problem framing
-* Modular abstraction design
-* Experiment specification
-
-## M1 — Transition Dynamics & Dataset Foundation
-
-* State representations
-* Invariant computation
-* Search dynamics
-* Dataset generation
-
-## M2 — Shared Neural Infrastructure
-
-* Feature extraction
-* Encoders
-* Registries
-* Model interfaces
-
-## M3 — Baseline Models
-
-* Graph search baseline
-* Permutation flow baseline
-
-## M4 — JEPA World Models
-
-* Latent prediction
-* EMA target networks
-* Iterative refinement
-
-## M5 — Evaluation & Analysis
-
-* Benchmarking
-* Scaling analysis
-* Latent probing
-* Failure analysis
-
----
-
-# Status
-
-Current phase:
-
-```text
-M1 — Transition Dynamics & Dataset Foundation
+```bibtex
+@misc{permutation_reasoning,
+  title={Permutation Reasoning via Invariant-Guided World Models},
+  author={Josh King},
+  year={2026},
+}
 ```
 
 ---
 
-# Long-Term Vision
+# Conclusion
 
-This project aims to serve as a compact but research-grade framework for studying:
+This repository explores combinatorial reasoning through invariant-guided permutation reconstruction and latent predictive world modeling.
 
-```text
-latent reasoning over combinatorial state spaces.
-```
+The framework combines:
 
-The broader motivation is understanding how predictive latent world models can support:
+* modular experimentation
+* structured search
+* predictive latent modeling
+* scaling analysis
+* failure analysis
+* automated research reporting
 
-* structured reasoning,
-* iterative search,
-* and combinatorial generalization.
+within a unified research infrastructure.
 
----
+While the environment is intentionally synthetic, the broader motivation is to study how learned systems reason over structured state spaces under constrained information.
 
-# License
+The long-term goal is to better understand:
 
-MIT License
+* latent reasoning
+* abstraction
+* predictive planning
+* combinatorial world modeling
+
+in scalable AI systems.
