@@ -213,10 +213,10 @@ Three regression methods are compared.
 
 Ordinary linear regression provides the simplest and most interpretable baseline:
 
-$$
-E[Y\mid X]
+$
+E[Y\mid X]$
 ==========
-
+$$
 \beta_0+\sum_{j=1}^{28}\beta_jX_j.
 $$
 
@@ -226,10 +226,10 @@ This determines whether reconstruction difficulty can be reasonably approximated
 
 Ridge regression adds an (L_2) penalty to the linear regression objective:
 
-$$
-\hat{\beta}
+$
+\hat{\beta}$
 ===========
-
+$$
 \arg\min_\beta
 \left[
 \sum_i(y_i-x_i^\top\beta)^2
