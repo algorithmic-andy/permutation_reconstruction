@@ -305,16 +305,16 @@ Using the current experimental configuration, the following results were obtaine
 
 | Model  |        MAE |       RMSE |      (R^2) |
 | ------ | ---------: | ---------: | ---------: |
-| Linear |     1.4025 |     2.0091 | **0.5084** |
-| Ridge  | **1.3643** | **2.0124** |     0.5077 |
-| Tree   |     1.7868 |     2.6347 |     0.1569 |
+| Linear |     1.5589 | **2.1989** | **0.3306** |
+| Ridge  |     1.5624 | **2.1989** | **0.3306** |
+| Tree   | **1.3872** |     2.2859 |     0.2763 |
 
 The linear and Ridge models perform almost identically. The small difference suggests that regularization provides little additional predictive benefit in this experiment, despite the expected correlation among the invariant features.
 
 The regression tree performs substantially worse, with
 
 $$
-R^2=0.1569.
+R^2=0.2763.
 $$
 
 This indicates that the particular nonlinear structure captured by the regression tree does not provide a better approximation to solver difficulty than the global linear models under the current feature representation and experimental design.
