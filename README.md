@@ -545,3 +545,29 @@ This project explores a connection between **combinatorial constraint solving an
 The key finding is that partial invariant information contains substantial predictive information about CP-SAT reconstruction difficulty, with linear and Ridge regression explaining approximately half of the variation in log-transformed search branches. However, the substantially weaker performance of the regression tree suggests that simply introducing a more flexible tabular model does not necessarily capture the underlying combinatorial structure.
 
 The results motivate future investigation of models that incorporate the structure of the permutation reconstruction problem directly, particularly graph-based representations and neural architectures designed for relational data.
+
+---
+
+# Citation
+
+If you use this repository, please cite
+
+```
+Joshua King (2026)
+
+A Regression Approach To Permutation Reconstruction Difficulty Prediction
+
+STAT 844 Final Project
+University of Waterloo
+```
+
+ZENODO CITATION GOES HERE
+
+
+---
+
+# License
+
+This project is released under the MIT License.
+
+---
