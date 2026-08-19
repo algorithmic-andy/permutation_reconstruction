@@ -165,7 +165,7 @@ Conflicts and propagations are retained as potential secondary responses and dia
 
 ## Feature Representation
 
-Each Partial Observation Set is converted into a fixed-length vector of 28 features.
+Each Partial Observation Set is converted into a fixed-length vector of 24 features.
 
 The feature ordering is:
 
@@ -199,7 +199,7 @@ An unobserved invariant is represented by zero.
 
 This is possible because neither a valid sum nor a valid product in this problem can naturally equal zero.
 
-Consequently, every Partial Observation Set can be represented using the same 28-dimensional feature vector, regardless of how many invariants were observed.
+Consequently, every Partial Observation Set can be represented using the same 24-dimensional feature vector, regardless of how many invariants were observed.
 
 A potential limitation is that the regression model must infer that zero represents an unobserved statistic rather than an observed value. Adding explicit observation indicators is therefore an important direction for future work.
 
@@ -213,11 +213,11 @@ Three regression methods are compared.
 
 Ordinary linear regression provides the simplest and most interpretable baseline:
 
-$
-E[Y\mid X]$
+
+$E[Y\mid X]$
 ==========
 $$
-\beta_0+\sum_{j=1}^{28}\beta_jX_j.
+\beta_0+\sum_{j=1}^{24}\beta_jX_j.
 $$
 
 This determines whether reconstruction difficulty can be reasonably approximated using an additive linear relationship between the observed invariants and solver difficulty.
