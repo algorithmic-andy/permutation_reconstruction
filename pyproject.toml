@@ -15,7 +15,7 @@ dependencies = [
     "pandas",
     "pickle",
     "pytest",
-    "sklearn",
+    "scikit-learn",
 ]
 
 [tool.setuptools.packages.find]
