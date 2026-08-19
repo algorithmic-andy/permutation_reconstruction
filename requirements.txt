@@ -1,0 +1,13 @@
+# Core numerical computing
+numpy>=1.26
+ortools>=9.10
+sklearn>=0.0
+
+# Data analysis
+pandas>=2.2
+
+# Visualization
+matplotlib>=3.9
+
+# Testing
+pytest>=8.0
