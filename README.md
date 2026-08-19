@@ -226,9 +226,10 @@ This determines whether reconstruction difficulty can be reasonably approximated
 
 Ridge regression adds an (L_2) penalty to the linear regression objective:
 
-$
-\hat{\beta}$
+
+$\hat{\beta}$
 ===========
+
 $$
 \arg\min_\beta
 \left[
