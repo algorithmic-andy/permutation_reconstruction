@@ -561,7 +561,7 @@ STAT 844 Final Project
 University of Waterloo
 ```
 
-ZENODO CITATION GOES HERE
+<img width="191" height="20" alt="image" src="https://github.com/user-attachments/assets/b6b11a77-6826-4ce9-9d3f-81ed3d7343e4" />
 
 
 ---
