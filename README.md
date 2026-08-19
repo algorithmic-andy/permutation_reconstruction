@@ -6,9 +6,9 @@ This project investigates whether the computational difficulty of reconstructing
 
 For a fixed natural number (n), consider a permutation of the integers
 
-$
+$$
 1,2,\ldots,n^2
-$
+$$
 
 reshaped into an ($n\times n$) matrix. Each matrix has several invariant statistics, including the sum and product of each row and column, as well as the corresponding statistics for the main diagonal and anti-diagonal.
 
