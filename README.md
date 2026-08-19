@@ -35,17 +35,17 @@ The project is divided into two independent phases:
 
 Let
 
-$
+$$
 A\in\mathbb{Z}^{n\times n}
-$
+$$
 
 be a matrix containing each integer from (1) through (n^2) exactly once.
 
 For this project, the dimension is fixed at
 
-$
+$$
 n=5,
-$
+$$
 
 so each matrix contains the integers ($1,\ldots,25$).
 
@@ -55,29 +55,29 @@ For each matrix, the following invariants can be computed:
 
 For each row (i),
 
-$
+$$
 S_i^{(r)} = \sum_{j=1}^{n} A_{ij},
-$
+$$
 
 and
 
-$
+$$
 P_i^{(r)} = \prod_{j=1}^{n} A_{ij}.
-$
+$$
 
 ### Columns
 
 For each column (j),
 
-$
+$$
 S_j^{(c)} = \sum_{i=1}^{n} A_{ij},
-$
+$$
 
 and
 
-$
+$$
 P_j^{(c)} = \prod_{i=1}^{n} A_{ij}.
-$
+$$
 
 ### Diagonal
 
@@ -89,15 +89,15 @@ The sum and product of the anti-diagonal are recorded as well.
 
 Thus, there are
 
-$
+$$
 4n+4
-$
+$$
 
 potential invariant statistics. For (n=5), this gives
 
-[
+$$
 4(5)+4=24
-]
+$$
 
 possible features.
 
@@ -107,9 +107,9 @@ possible features.
 
 For each generated matrix, every invariant is independently observed with probability
 
-$
+$$
 p=0.5.
-$
+$$
 
 Thus, each instance contains a different Partial Observation Set.
 
@@ -153,9 +153,9 @@ The primary response variable is solver search difficulty, measured by the numbe
 
 The raw branch count is strongly right-skewed, so the response is transformed as
 
-$
+$$
 Y=\log(1+\text{branches}).
-$
+$$
 
 The logarithmic transformation reduces the influence of extremely difficult instances and produces a more suitable response for conventional regression methods.
 
@@ -185,9 +185,9 @@ The feature ordering is:
 
 Raw product values can be substantially larger than the corresponding sums. Therefore, product observations are logarithmically transformed before entering the regression models:
 
-$
+$$
 P \longrightarrow \log(P).
-$
+$$
 
 The `"product"` identifier is retained in the observation representation; the logarithmic transformation occurs when constructing the regression feature vector.
 
@@ -213,12 +213,12 @@ Three regression methods are compared.
 
 Ordinary linear regression provides the simplest and most interpretable baseline:
 
-$
+$$
 E[Y\mid X]
 ==========
 
 \beta_0+\sum_{j=1}^{28}\beta_jX_j.
-$
+$$
 
 This determines whether reconstruction difficulty can be reasonably approximated using an additive linear relationship between the observed invariants and solver difficulty.
 
@@ -226,7 +226,7 @@ This determines whether reconstruction difficulty can be reasonably approximated
 
 Ridge regression adds an (L_2) penalty to the linear regression objective:
 
-$
+$$
 \hat{\beta}
 ===========
 
@@ -236,7 +236,7 @@ $
 +
 \lambda\sum_j\beta_j^2
 \right].
-$
+$$
 
 Ridge is motivated by the substantial dependence expected among the invariant features.
 
@@ -258,31 +258,31 @@ The models are evaluated using common predictive metrics:
 
 ### Mean Absolute Error
 
-$
+$$
 MAE =
 \frac{1}{N}
 \sum_{i=1}^{N}
 |y_i-\hat y_i|.
-$
+$$
 
 MAE measures the average absolute prediction error and is relatively easy to interpret.
 
 ### Root Mean Squared Error
 
-$
+$$
 RMSE =
 \sqrt{
 \frac{1}{N}
 \sum_{i=1}^{N}
 (y_i-\hat y_i)^2
 }.
-$
+$$
 
 RMSE gives greater weight to large prediction errors than MAE.
 
 ### Coefficient of Determination
 
-$
+$$
 R^2
 ===
 
@@ -292,7 +292,7 @@ R^2
 }{
 \sum_i(y_i-\bar y)^2
 }.
-$
+$$
 
 (R^2) is the primary metric because it measures the proportion of variation in solver difficulty explained by the model relative to a mean-response baseline.
 
@@ -308,25 +308,13 @@ Using the current experimental configuration, the following results were obtaine
 | Ridge  | **1.3643** | **2.0124** |     0.5077 |
 | Tree   |     1.7868 |     2.6347 |     0.1569 |
 
-The linear and Ridge models perform almost identically in terms of (R^2):
-
-$
-R^2_{\text{Linear}}=0.5084,
-$
-
-compared with
-
-$
-R^2_{\text{Ridge}}=0.5077.
-$
-
-The small difference suggests that regularization provides little additional predictive benefit in this experiment, despite the expected correlation among the invariant features.
+The linear and Ridge models perform almost identically. The small difference suggests that regularization provides little additional predictive benefit in this experiment, despite the expected correlation among the invariant features.
 
 The regression tree performs substantially worse, with
 
-[
+$$
 R^2=0.1569.
-]
+$$
 
 This indicates that the particular nonlinear structure captured by the regression tree does not provide a better approximation to solver difficulty than the global linear models under the current feature representation and experimental design.
 
@@ -338,23 +326,23 @@ The results demonstrate that the invariant statistics contain meaningful informa
 
 However, the results also suggest that conventional tabular regression models do not fully capture the structure of the underlying combinatorial problem.
 
-The underlying population is extremely large. For (n=6), there are
+The underlying population is extremely large. For (n=5), there are
 
-[
-36!
-]
+$$
+25!
+$$
 
 possible permutation matrices, approximately
 
-[
-3.72\times10^{41}.
-]
+$$
+1.55\times10^{25}.
+$$
 
-The 100,000 generated instances therefore represent only a tiny fraction of the possible permutation matrices.
+The 10,000 generated instances therefore represent only a tiny fraction of the possible permutation matrices.
 
 This does **not** imply that the reported test performance is necessarily biased in a particular direction, but it does limit the extent to which the results can be interpreted as describing the entire combinatorial population. The sampled instances provide evidence about the data-generating process represented by the experiment, rather than exhaustive coverage of the underlying permutation space.
 
-The substantially poorer performance of the regression tree may also reflect the difficulty of learning a structured combinatorial landscape using axis-aligned partitions from a finite sample. The observed invariant configurations occupy a highly constrained subset of the nominal 28-dimensional feature space, and the relationships between the features are determined by the underlying permutation structure.
+The substantially poorer performance of the regression tree may also reflect the difficulty of learning a structured combinatorial landscape using axis-aligned partitions from a finite sample. The observed invariant configurations occupy a highly constrained subset of the nominal 24-dimensional feature space, and the relationships between the features are determined by the underlying permutation structure.
 
 ---
 
@@ -376,21 +364,21 @@ These representations could allow a model to exploit structural relationships th
 
 The current representation uses zero to indicate that an invariant was not observed.
 
-A future experiment could add 28 binary indicators:
+A future experiment could add 24 binary indicators:
 
-[
+$$
 M_j=
 \begin{cases}
 1 & \text{if invariant }j\text{ is observed},\
 0 & \text{otherwise}.
 \end{cases}
-]
+$$
 
-The resulting feature vector would contain 56 variables:
+The resulting feature vector would contain 48 variables:
 
-[
-(X_1,\ldots,X_{28},M_1,\ldots,M_{28}).
-]
+$$
+(X_1,\ldots,X_{24},M_1,\ldots,M_{24}).
+$$
 
 This would allow the regression models to distinguish explicitly between an unobserved statistic and an observed numerical value.
 
@@ -404,9 +392,9 @@ Composite difficulty measures and ratios between solver statistics could also be
 
 The current experiment fixes
 
-[
-n=6.
-]
+$$
+n=5.
+$$
 
 Future studies could investigate how predictive performance changes as (n) increases or decreases.
 
@@ -499,8 +487,8 @@ Key experimental parameters are centralized in `config.py`, including:
 The primary experiment uses:
 
 ```text
-n = 6
-number of instances = 100,000
+n = 5
+number of instances = 10,000
 observation probability = 0.5
 ```
 
@@ -527,10 +515,10 @@ See `requirements.txt` for the complete dependency specification.
 Several limitations should be considered when interpreting the results.
 
 1. **Finite sampling of a massive combinatorial population.**
-   The experiment uses 100,000 instances from an enormously larger space of possible permutation matrices.
+   The experiment uses 10,000 instances from an enormously larger space of possible permutation matrices.
 
 2. **Fixed dimension.**
-   Only (n=6) is considered, so the conclusions may not generalize to other matrix dimensions.
+   Only (n=5) is considered, so the conclusions may not generalize to other matrix dimensions.
 
 3. **Fixed observation probability.**
    The primary experiment uses (p=0.5). Different observation probabilities may produce different relationships between invariant information and reconstruction difficulty.
@@ -539,7 +527,7 @@ Several limitations should be considered when interpreting the results.
    Unobserved invariants are encoded as zero rather than using explicit missingness indicators.
 
 5. **Censored solution count.**
-   The number of solutions is capped at 1,000 and therefore does not represent the exact number of solutions for instances exceeding this threshold.
+   The number of solutions is capped at 50 and therefore does not represent the exact number of solutions for instances exceeding this threshold.
 
 6. **Solver-specific responses.**
    The response variables are statistics produced by CP-SAT and may depend on solver implementation and configuration.
