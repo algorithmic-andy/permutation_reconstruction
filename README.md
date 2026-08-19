@@ -283,10 +283,10 @@ RMSE gives greater weight to large prediction errors than MAE.
 
 ### Coefficient of Determination
 
-$$
-R^2
-===
 
+$R^2$
+===
+$$
 1-
 \frac{
 \sum_i(y_i-\hat y_i)^2
