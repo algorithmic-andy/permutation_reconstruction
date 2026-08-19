@@ -36,7 +36,7 @@ The project is divided into two independent phases:
 Let
 
 $$
-A\in\mathbb{Z}^{n\times n}
+A\in\mathbb{N}^{n\times n}
 $$
 
 be a matrix containing each integer from (1) through (n^2) exactly once.
