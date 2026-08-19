@@ -1,7 +1,7 @@
 # Core numerical computing
 numpy>=1.26
 ortools>=9.10
-sklearn>=0.0
+scikit-learn>=0.24
 
 # Data analysis
 pandas>=2.2
