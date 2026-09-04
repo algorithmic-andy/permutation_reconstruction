@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository accompanies the STAT 844 Statistical Learning - Advanced Regression final paper
+This repository accompanies the Spring 2026 STAT 844 Statistical Learning - Advanced Regression final paper
 
 > **A Regression Approach To Permutation Reconstruction Difficulty Prediction**
 
