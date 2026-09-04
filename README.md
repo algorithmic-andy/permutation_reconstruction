@@ -2,6 +2,10 @@
 
 ## Overview
 
+This repository accompanies the STAT 844 Statistical Learning - Advanced Regression final paper
+
+> **A Regression Approach To Permutation Reconstruction Difficulty Prediction**
+
 This project investigates whether the computational difficulty of reconstructing a permutation matrix from partial invariant information can be predicted using conventional regression methods.
 
 For a fixed natural number (n), consider a permutation of the integers
